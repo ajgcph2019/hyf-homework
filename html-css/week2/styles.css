@@ -1,6 +1,6 @@
  .page{
   
-  box-sizing: content-box;
+  
   text-align: center;
 
 
@@ -42,7 +42,8 @@ li a{
 a:hover{
   color:green;
 }
-.cover-pic{
+
+#cover-pic{
   
  width:100%;
   
