@@ -1,0 +1,148 @@
+ .page{
+  
+  box-sizing: content-box;
+  text-align: center;
+
+
+  
+}
+header{
+  display: block;
+  background-color:ivory;
+  padding:15px;
+}
+h1,h2{
+  top:0px;
+  left:0px;
+   font-style: "Times New Roman","Georgia",serif;
+   
+}
+h1{
+  font-size:20px;
+  color:black;
+}
+h2{
+  font-size:12px;
+  color:silver;
+}
+h3,h4,h5,h6{
+  color: black;
+}
+.menu-links{
+  display:flex;
+  flex-direction: column;
+  list-style-type:none;
+  
+}
+li a{
+
+  color:silver;
+  text-decoration: none;
+}
+a:hover{
+  color:green;
+}
+.cover-pic{
+  
+ width:100%;
+  
+}
+div{
+ 
+  box-sizing: border-box;
+  
+}
+
+
+footer {
+  display: flex;
+  flex-direction: column;
+   justify-content: center;
+  background-color: blueviolet;
+
+  margin: 10px;
+  padding: 15px;
+  font-family: 'Times New Roman', Times, serif;
+ 
+  color: white
+}
+div > address{
+  font-style: normal;
+  
+}
+div >ul{
+  list-style-type: none;
+  
+}
+
+@media only screen and (min-width: 900px){ 
+  .page{
+    margin:0 auto;
+    padding: 10px;
+    text-align: center;
+  }
+ .menu-links{
+   display: flex;
+   flex-direction: row;
+    justify-content: space-around;
+   margin: 5px;
+  
+  list-style-type: none;
+}
+main {
+
+ display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: 20px;
+  padding:15px;
+  color:grey;
+
+}
+main> section{
+ 
+ order:2;
+ width: 75%;
+ text-align: justify;
+ font-size: 1 em;
+
+}
+main >article{
+  
+  width: 20%;
+  order:1;
+margin-right:20px;
+font-size: 0.8em;
+
+}
+main > nav{
+  
+ order:4;
+ width: 75%;
+ font-size: 1 em;
+ padding:5px;
+}
+main > aside{
+  
+  
+margin-right: 10px;
+  order:3;
+  width: 20%;
+  font-size: 0.8em;
+}
+
+ 
+a >img {
+  list-style-type: none;
+  padding: 10px;
+  width:21%;
+}
+footer {
+  display:flex;
+  flex-direction: row;
+
+   justify-content: space-between;
+ 
+
+}
+}
