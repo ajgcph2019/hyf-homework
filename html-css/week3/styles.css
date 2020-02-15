@@ -84,7 +84,7 @@ input[type="checkbox"]:checked ~ .checked-details{
     justify-content: center;
 }
 
-button{
+#button{
     text-align: center;
     background-color:lightgray;
     margin: 15px;
@@ -135,10 +135,4 @@ button{
     flex-wrap: wrap;
 
 }
-#button {
-    width: 8em;
-    border: 1px solid white;
-    background: lightgray;
-    float: right;
-    padding: 10px;
-}
+
