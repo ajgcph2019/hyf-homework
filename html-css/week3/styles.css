@@ -85,13 +85,14 @@ input[type="checkbox"]:checked ~ .checked-details{
 }
 
 #button{
-    text-align: center;
+
     background-color:lightgray;
     margin: 15px;
-    width:200px;
+    width:70px;
     height:70px;
     color: black;
     float: right;
+    border:1 px solid;
 }
 .radio-group{
     display: flex;
