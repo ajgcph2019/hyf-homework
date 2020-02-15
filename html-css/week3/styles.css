@@ -1,0 +1,137 @@
+.container{
+  margin:0 auto;
+  width: 960px;
+}
+.header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.logo{
+
+    display:flex;
+    width:100px;
+    height: 100px;
+    border: 1 px solid gray;
+    background-color: lightgray;
+    justify-content: center;
+    align-items: center;
+}
+.nav-bar{
+    display: flex;
+    width: 500px;
+    height:100px;
+    border: 1 px solid gray;
+    background-color: lightgray;
+    justify-content: center;
+   align-items: center;
+}
+.content{
+
+    width:50%;
+}
+.form{
+    display: flex;
+    flex-direction:  row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    
+}
+.first-row,.second-row,.third-row,select{
+   margin-bottom: 10px;
+  
+}
+
+select{
+    width: 150px;
+  
+}
+.profile-desc{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: flex-start;
+}
+
+.hint{
+   flex-direction: column;
+      flex-wrap: wrap;
+     width:100px;
+    }
+span{
+    
+    font-style: italic ;
+   font-size:0.5 rem;
+}
+.shipping-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+input[type="checkbox"]:checked ~ .checked-details{
+    
+    opacity: 0;
+    cursor: pointer;
+   
+}
+.checked-details{
+    display:flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+button{
+    text-align: center;
+    background-color:lightgray;
+    margin: 15px;
+    width:200px;
+    height:70px;
+    color: black;
+    float: right;
+}
+.radio-group{
+    display: flex;
+    flex-flow: row wrap;
+
+}
+.items{
+    display: flex;
+   flex-direction: row;
+  justify-content: space-evenly;
+
+ margin:10px;
+ padding: 5px;
+}
+.images{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between ;
+ align-items: center;
+}
+.payment-form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.image-icons{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    
+}
+.row1,.row2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
