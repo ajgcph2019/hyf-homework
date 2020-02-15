@@ -22,8 +22,9 @@
                 <label for="pro-id">Progress:</label>
                 <progress value="80" max="100">  </progress>
             </div>
-            <form action="" method="POST" >
+           
                 <div class="payment-form">
+                    <form action="/index" target="_blank" method="POST">
                     <p>Please fill in your payment data</p>
                     <div class="first-row">
                        <label for="fn">Name on card</label>
@@ -56,10 +57,11 @@
                 </div>
                 
            </div>  
-             <button  type="submit" value="button" > Next Step </button> 
-                              
-                     
+    
+           <button id="button" type="submit" onclick="window.location='index.html'">Next Step</button>          
+      
         </form>
-    </div>
+        
+   </div>
    </body>
 </html>

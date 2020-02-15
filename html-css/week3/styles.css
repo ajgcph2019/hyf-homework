@@ -135,3 +135,10 @@ button{
     flex-wrap: wrap;
 
 }
+#button {
+    width: 8em;
+    border: 1px solid white;
+    background: lightgray;
+    float: right;
+    padding: 10px;
+}

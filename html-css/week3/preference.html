@@ -22,8 +22,9 @@
                 <label for="pro-id">Progress:</label>
                 <progress value="60" max="100">  </progress>
             </div>
-            <form action="payment.html" method="GET" target="_blank">
-                <div class="checkbox-group">
+    
+                <div class="form">
+                    <form action="" target="_blank" method="POST">
                     <p>What kind of items are you interested in offers on ?</p>
                       <div class="items">
                         <div class="first-column">
@@ -52,7 +53,6 @@
                              </div>
                             </div>
                       </div>
-                    </div>
                     <p>Choose the images that best resemble your style</p>
                       <div class="images">
                         <div class="row1">
@@ -67,6 +67,7 @@
                                 <img  src="https://via.placeholder.com/150"  />
                                 <div>
                                     <label for="option-2">Select</label>
+                                    <input type="checkbox" id="option-3" name="options" value="option-2" checked>
                                 </div>
                             </div>
                             <div class="image-icons"> 
@@ -114,8 +115,11 @@
                             </div>
                          </div>
                         </div>   
-                      <button  type="submit" value="button" > Next Step </button> 
-                    </form>
-         </div>                
+                        
+                    
+                </div>
+                <button id="button" type="submit" onclick="window.location='payment.html'">Next Step</button> 
+            </form> 
+        </div>    
    </body>
 </html>
