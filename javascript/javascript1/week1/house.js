@@ -11,6 +11,7 @@ const secondHouseHeight = 8;
 const secondGardenSizeInM2 = 70;
 const housePrice ;
 const secondHousePrice;
+const secondVolumeinMeters;
 
 volumeInMeters = firstHouseDepth * firstHouseWidth * firstHouseHeight ;
 
@@ -21,7 +22,7 @@ if(sellingPrice_Peter >housePrice  ){
                                       console.log("Peter is paying " + sellingPrice_Peter +" which exceeds the actual cost");
                                      }
 
-let secondVolumeinMeters=  secondHouseWidth *  secondHouseDepth * secondHouseHeight;
+secondVolumeinMeters=  secondHouseWidth *  secondHouseDepth * secondHouseHeight;
 secondHousePrice = secondVolumeinMeters * 2.5 * 1000 + secondGardenSizeInM2 * 300 ;
 console.log("Second house calculated price is " +secondHousePrice + " but sale price is " + sellingPrice_Julia);
 
