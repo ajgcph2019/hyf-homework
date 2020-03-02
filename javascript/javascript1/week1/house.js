@@ -2,7 +2,7 @@ const firstHouseWidth = 8;
 const firstHouseDepth = 10;
 const firstHouseHeight = 10;
 const gardenSizeInM2 = 100;
-let volumeInMeters;
+const volumeInMeters;
 const sellingPrice_Peter = 2500000;
 const sellingPrice_Julia = 1000000;
 const secondHouseWidth = 5;
