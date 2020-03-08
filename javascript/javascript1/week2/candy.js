@@ -1,63 +1,34 @@
-let boughtCandyPrices = [] ;
-let price ;
+const boughtCandyPrices = [] ;
 const amountToSpend = Math.random() * 100 ;
 
-function addCandy (candyType ,weight ) {
+console.log('amountToSpend', amountToSpend)
 
-    if ( candyType == "sweet") {
-       
-        price = weight * 0.5;
-        boughtCandyPrices.push(price) ;
-    
-    }
-
-    else if (candyType == "chocolate") {
-        
-        price = weight * 0.7;
-        boughtCandyPrices.push(price) ;
-    
-    }
-
-    else if (candyType == "toffee") {
-      
-        price = weight * 1.1;
-        boughtCandyPrices.push(price) ;
-    }
-
-    else if (candyType == "chewing gum") {
-      
-        price = weight * 0.03;
-        boughtCandyPrices.push(price) ;
-    }
-  return boughtCandyPrices.toString();
+function addCandy(candyType, weight) {
+  if (candyType === 'Sweet') {
+    boughtCandyPrices.push(0.5 * weight);
+  } else if (candyType === 'Chocolate') {
+    boughtCandyPrices.push(0.7 * weight);
+  } else if (candyType === 'Toffee') {
+    boughtCandyPrices.push(1.1 * weight);
+  } else if (candyType === 'Chewing-gum') {
+    boughtCandyPrices.push(0.03 * weight);
+  }
 }
 
-function canBuyMoreCandy() {
+function canBuyMoreCandy(arrayOfPrices) {
+  let totalPrice = 0;
+  for (let i = 0; i < arrayOfPrices.length; i++) {
+    totalPrice = totalPrice + arrayOfPrices[i];
+  }
 
-    let totalPrice = 0;
-    addCandy('sweet', 20); 
-    addCandy('chocolate' , 12) ;
-    addCandy ('toffee' , 10) ;
-    addCandy('chewing gum', 6);
-    for (let i= 0 ;i < boughtCandyPrices.length ;i++) {
-         totalPrice = totalPrice +boughtCandyPrices[i];
-    }
-         console.log ("Total Price = " + totalPrice) ;
-         console.log("Amount to spend " + amountToSpend) ;
-        if (totalPrice <= amountToSpend) {
+  return totalPrice < amountToSpend
+}
 
-            console.log ("You can buy more, so please do!") ;
-            return true;
-        }
-        else {
-              
-            console.log ("Enough candy for you!") ;
-            return false ;
-        }
-            
-    }
-    
-console.log (boughtCandyPrices);
-const check = canBuyMoreCandy ();
-console.log(check) ;
+addCandy('Sweet', 10);
+addCandy('Chocolate', 100);
 
+console.log('boughtCandyPrices', boughtCandyPrices);
+
+const isAbleToBuyMoreCandy = canBuyMoreCandy(boughtCandyPrices);
+
+console.log(isAbleToBuyMoreCandy);
