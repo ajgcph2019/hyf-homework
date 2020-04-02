@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <label for="name">Name :</label>
+    <input type="text" id="name" placeholder="Enter name" required
+       minlength="4"  size="20">
+    <button type="button" id="myButton" >Click Here</button>
+  
+    <div id ="animal"></div>
+
+
+    <script type ="text/javascript">
+        const spiritAnimal = ["Keeper Armadillo","Guardian Bat","Gentle Deer","Independent Badger","Lawkeeper Crow","Loyal Dog","Friendly Dolphin","Swift Horse","The Fullmoon wolf","Crying butterfly"];
+
+        const buttonTag = document.getElementById('myButton')
+
+		
+		buttonTag.addEventListener('click', function(event){
+
+            const item =  document.getElementById("name").value;
+            alert(item) ;
+
+            if(!item) // if no name is passed
+            
+            {
+
+                alert("Enter a name");
+            }
+            else
+            {
+                let randomNumber = Math.floor(Math.random() * spiritAnimal.length);
+                let randomElement = spiritAnimal[randomNumber];
+                document.getElementById("animal").innerHTML = item + " " + "-" + " The " + " " +randomElement;
+
+            }
+        
+
+        })
+        
+	</script>
+
+
+</body>
+</html>
+
