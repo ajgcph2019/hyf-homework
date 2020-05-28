@@ -1,27 +1,15 @@
-// https://api.github.com/search/repositories?q=user:benna100
-// https://api.github.com/search/repositories?q=user:panivita
-// https://api.github.com/search/repositories?q=user:LucyChyzhova
+const userNames = ["benna100", "panivita", "LucyChyzhova"];
 
-const username = ["benna100", "panivita", "LucyChyzhova"];
+function createPromise(user) {
+  return fetch(`https://api.github.com/search/repositories?q=user:${user}`);
+}
+const promises = [];
 
-// Lets use the github api to see what repositories different users have.
-const username1 = "benna100";
-const username2 = "panivita";
-const username3 = "LucyChyzhova";
-
-const promise1 = fetch(
-  `https://api.github.com/search/repositories?q=user:${username1}`
-);
-
-const promise2 = fetch(
-  `https://api.github.com/search/repositories?q=user:${username2}`
-);
-
-const promise3 = fetch(
-  `https://api.github.com/search/repositories?q=user:${username3}`
-);
-
-Promise.all([promise1, promise2, promise3])
+userNames.forEach(function (userName) {
+  promises.push(createPromise(userName));
+});
+console.log(promises);
+Promise.all(promises)
   .then((responses) =>
     Promise.all(responses.map((response) => response.json()))
   )
