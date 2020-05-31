@@ -1,9 +1,11 @@
+USE hyf_lesson2;
+
 -- Part 3
 -- Get all the tasks assigned to users whose email ends in @spotify.com
 SELECT t.title 
 FROM user_task ut 
 INNER JOIN task t ON ut.task_id=t.id 
-WHERE ut.user_id = (
+WHERE ut.user_id IN (
     SELECT id
     FROM user 
     WHERE email LIKE '%@spotify.com'
@@ -13,7 +15,7 @@ WHERE ut.user_id = (
 SELECT t.title
 FROM task t
 INNER JOIN user_task ut ON t.id = ut.task_id
-WHERE ut.user_id = (
+WHERE ut.user_id IN (
     SELECT id 
     FROM user
     WHERE name = 'Donald Duck'
@@ -27,7 +29,7 @@ AND t.status_id = (
 -- Get all the tasks for 'Maryrose Meadows' that were created in september (hint: month(created)=month_number)
 select t.title from task t
 inner join user_task ut ON t.id = ut.task_id
-WHERE ut.user_id = 
+WHERE ut.user_id IN
 (select id from user where name = 'Maryrose Meadows') AND month(created) = 09;
 
 -- Find how many tasks where created in each month, e.g. how many tasks were created in october, how many tasks were created in november, etc. (hint: use group by)
