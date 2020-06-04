@@ -1,0 +1,15 @@
+* {
+   
+    text-align: center;
+}
+
+ul {
+	list-style: none;
+	font-weight: 600;
+}
+
+li {
+	font-weight: normal;
+	padding-bottom: 0.5em;
+	list-style: none;
+}
