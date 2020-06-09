@@ -54,16 +54,7 @@ INSERT INTO `meal` (
 	5,
 	100,
 	'2019-12-27 10:30:00'
-);
-INSERT INTO `meal` (
-    `title`,
-    `description`,
-    `location`,
-    `when_date`,
-    `max_reservation`, 
-    `price`,
-    `created_date`
-) VALUES (
+), (
 	'Chicken biriyani',
 	'Spicy chicken biriyani',
     'Jagtvej 1A',
@@ -71,17 +62,7 @@ INSERT INTO `meal` (
 	6,
 	150,
 	'2019-12-29 16:30:00'
-);
-
-INSERT INTO `meal` (
-    `title`,
-    `description`,
-    `location`,
-    `when_date`,
-    `max_reservation`, 
-    `price`,
-    `created_date`
-) VALUES (
+), (
 	'Chicken roll',
 	'Spicy chicken roll',
     'Jagtvej 1A',
@@ -89,17 +70,7 @@ INSERT INTO `meal` (
 	3,
 	50,
 	'2019-12-29 16:30:00'
-);
-
-INSERT INTO `meal` (
-    `title`,
-    `description`,
-    `location`,
-    `when_date`,
-    `max_reservation`, 
-    `price`,
-    `created_date`
-) VALUES (
+), (
 	'Chicken shawarma',
 	'Spicy chicken shawarma',
     'Jagtvej 1A',
@@ -135,25 +106,22 @@ INSERT INTO `reservation` (
 	3,
     1,
 	'2019-12-27 10:15:00'
-);
-INSERT INTO `reservation` (
-    `number_of_guests`,
-    `meal_id`,
-    `created_date`
-) VALUES (
+    ) , (
 	5,
 	2,
 	'2019-12-26 17:15:00'
-);
-INSERT INTO `reservation` (
-    `number_of_guests`,
-    `meal_id`,
-    `created_date`
-) VALUES (
+) , (
+
+	3,
+	2,
+	'2019-12-26 17:15:00'
+), (
 	6,
 	3,
 	'2019-11-26 08:15:00'
-);
+) ;
+
+
 select * from reservation;
 -- Get a reservation with any id, fx 1
 select * from reservation
@@ -185,40 +153,19 @@ INSERT INTO `review` (
     2,
     4,
     DATE(NOW())
-);
-INSERT INTO `review` (
-    `title`,
-    `description`,
-    `meal_id`,
-    `stars`,
-    `created_date`
-) VALUES (
+),(
 	'very good',
     'we were very satisfied',
     2,
     5,
     DATE(NOW())
-);
-INSERT INTO `review` (
-    `title`,
-    `description`,
-    `meal_id`,
-    `stars`,
-    `created_date`
-) VALUES (
+),(
 	'average food quality',
     'scope for improvement',
     3,
     2,
     DATE(NOW())
-);
-INSERT INTO `review` (
-    `title`,
-    `description`,
-    `meal_id`,
-    `stars`,
-    `created_date`
-) VALUES (
+), (
 	'slow service',
     'rude waiters',
     4,
@@ -246,10 +193,12 @@ select * from meal;
 select * from meal where price < 90;
 
 -- Get meals that still has available reservations
-SELECT * FROM reservation 
-JOIN meal
-	ON meal.id = reservation.meal_id
-WHERE number_of_guests < max_reservation;
+SELECT *
+FROM   reservation r
+       JOIN meal m
+         ON m.id = r.meal_id
+GROUP  BY r.meal_id
+HAVING Sum(r.number_of_guests) < m.max_reservation;  
 
 -- Get meals that partially match a title. Rød grød med will match the meal with the title Rød grød med fløde
 select * FROM meal
@@ -264,15 +213,25 @@ order by id limit 5;
 
 -- Get the meals that have good reviews
 
-SELECT meal.id, meal.title, meal.location, review.stars, review.title, review.description, review.created_date
-FROM meal
-INNER JOIN review ON review.meal_id = meal.id
-WHERE review.stars >= 4;
+
+SELECT meal.id,
+       meal.title,
+       meal.location,
+       Avg(review.stars) avg_stars,
+       review.title,
+       review.description,
+       review.created_date
+FROM   meal
+       INNER JOIN review
+               ON review.meal_id = meal.id
+GROUP  BY review.meal_id
+HAVING Avg(review.stars) > 3; 
         
 -- Get reservations for a specific meal sorted by created_date
-SELECT * 
+SELECT meal_id, sum(number_of_guests), created_date
 FROM reservation
-WHERE meal_id = 2
+-- WHERE meal_id = 2
+group by meal_id, created_date
 ORDER BY created_date DESC;
 
 -- Sort all meals by average number of stars in the reviews
@@ -280,6 +239,6 @@ SELECT meal.title, AVG(review.stars) AS `average_rating` FROM meal
 INNER JOIN review
 ON meal.id = review.meal_id
 GROUP BY meal.id
-ORDER BY review.stars DESC;
+ORDER BY review.stars DESC; 
         
         
