@@ -1,11 +1,10 @@
-const express = require("express");
-const app = express();
-const meals = require("../data/meals.json");
+const mealWithReview = require("../data/mealsWithReviews.js");
 
 //Respond with the json for a random meal
-app.get("/meal", (req, res) => {
-  const randomMeal = meals[Math.floor(Math.random() * meals.length)];
+module.exports = (req, res) => {
+  const randomMealIndex = Math.floor(Math.random() * mealWithReview.length) ;
+  const randomMeal =  mealWithReview[randomMealIndex];
   res.send(randomMeal);
-});
+};
 
-module.exports = app;
+ 
