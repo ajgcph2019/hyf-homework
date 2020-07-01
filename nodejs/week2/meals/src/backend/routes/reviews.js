@@ -1,19 +1,17 @@
-const express = require('express');
-const app = express();
+const express = require("express");
+const router = express.Router();
+
 const reviews = require("../data/reviews");
 
 // Respond with the json for all reservations
-app.get('/reviews', (req, res) => {
+router.get("/", (req, res) => {
   res.send(reviews);
 });
 // Respond with the json for reservation with ID
-app.get('/reviews/:id', (req, res) => {
-  
-    const id = parseInt(req.params.id);
-    console.log(req.params.id);
-    const getReviewWithID = reviews.filter(review => review.id === id);
-     res.send(getReviewWithID);
-
+router.get("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const getReviewWithID = reviews.filter((review) => review.id === id);
+  res.send(getReviewWithID);
 });
 
-module.exports = app;
+module.exports = router;

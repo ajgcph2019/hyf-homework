@@ -1,10 +1,10 @@
 const express = require("express");
-const app = express();
+const router = express.Router();
+
 const meals = require("../data/meals.json");
-const reviews = require("../data/reviews.json");
 
 //Respond with the json for the meal with the corresponding id
-app.get("/meals/:id", (req, res) => {
+router.get("/:id", (req, res) => {
   const id = req.params.id;
   if (!isNaN(id)) {
     const getMealWithID = meals.filter((meal) => meal.id === parseInt(id));
@@ -12,9 +12,9 @@ app.get("/meals/:id", (req, res) => {
     if (getMealWithID.length === 0) {
       return res.status(404).send(`Meal with the  id ${id} is not found`);
     }
-    res.send(getMealWithID);
+    res.json(getMealWithID);
   }
-  return res.status(400).send(`Bad request, ${id} is not a number`);
+  return res.status(400).json(`Bad request, ${id} is not a number`);
 });
 
 // Respond with the json for all the meals.
@@ -23,10 +23,10 @@ app.get("/meals/:id", (req, res) => {
 // createdAfter	- Get meals that has been created after the date - /meals?createdAfter=2019-04-05
 // limit - Only specific number of meals - /meals?limit=4
 
-app.get("/meals", (req, res) => {
+router.get("/", (req, res) => {
   const maxPrice = req.query.maxPrice;
   const queryTitle = req.query.title;
-  const dateQuery = Date.parse(req.query.createdAfter);
+  const dateQuery = req.query.createdAfter;
   const queryLimit = req.query.limit;
 
   if (maxPrice) {
@@ -36,11 +36,11 @@ app.get("/meals", (req, res) => {
         (meal) => meal.price < parseFloat(maxPrice)
       );
       if (mealsPriceLessThanMaxPrice.length === 0) {
-        return res.status(404).send("No meals in the price range");
+        return res.json(404).send("No meals in the price range");
       }
       return res.json(mealsPriceLessThanMaxPrice);
     }
-    return res.status(400).send(`Bad request, ${maxPrice} is not a number`);
+    return res.status(400).json(`Bad request, ${maxPrice} is not a number`);
   }
   if (queryTitle) {
     const mealsWithMatchingTitle = meals.filter((meal) =>
@@ -49,13 +49,14 @@ app.get("/meals", (req, res) => {
     if (mealsWithMatchingTitle.length === 0) {
       return res
         .status(404)
-        .send(`No meal matched with the word ${queryTitle}`);
+        .json(`No meal matched with the word ${queryTitle}`);
     }
-    res.send(mealsWithMatchingTitle);
+    res.json(mealsWithMatchingTitle);
   }
   if (dateQuery) {
+
     const mealsCreatedAfter = meals.filter(
-      (meal) => Date.parse(meal.createdAt) > dateQuery
+      (meal) => Date.parse(meal.createdAt) > Date.parse(dateQuery)
     );
 
     if (mealsCreatedAfter.length === 0) {
@@ -79,4 +80,4 @@ app.get("/meals", (req, res) => {
   res.send(meals);
 });
 
-module.exports = app;
+module.exports = router;
