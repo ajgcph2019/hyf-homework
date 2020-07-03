@@ -54,7 +54,7 @@ router.get("/", (req, res) => {
     res.json(mealsWithMatchingTitle);
   }
   if (dateQuery) {
-    console.log(dateQuery);
+
     const mealsCreatedAfter = meals.filter(
       (meal) => Date.parse(meal.createdAt) > Date.parse(dateQuery)
     );

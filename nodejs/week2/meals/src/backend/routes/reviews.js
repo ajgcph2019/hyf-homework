@@ -10,7 +10,6 @@ router.get("/", (req, res) => {
 // Respond with the json for reservation with ID
 router.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  console.log(req.params.id);
   const getReviewWithID = reviews.filter((review) => review.id === id);
   res.send(getReviewWithID);
 });
