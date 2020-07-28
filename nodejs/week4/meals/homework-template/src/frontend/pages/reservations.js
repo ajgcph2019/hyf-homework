@@ -18,16 +18,16 @@ window.handleReservationsRequest = async () => {
           </div>
             <div class ="menu">
               <ul class="main-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/reviews">Reviews</a></li>
-               <li><a href="/reservations">Reservations</a></li>
+              <li><a href="/" data-navigo >Home</a></li>
+              <li><a href="/reviews" data-navigo >Reviews</a></li>
+               <li><a href="/reservations" data-navigo>Reservations</a></li>
              </ul>
      </div>
     </div>
     
   
     <div>${renderReservation(getReservation)}</div>
-    <div> <a href="/">Home</a> </div>
+    <div> <a href="/" data-navigo >Home</a> </div>
     <footer>          
     <p>&copy; 2020 Mealsharing app project done by Anna John George </p>
   </footer> 

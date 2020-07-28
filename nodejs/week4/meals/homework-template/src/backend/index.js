@@ -29,9 +29,7 @@ router.use("/reservations", reservationsRouter);
 router.use("/reviews", reviewsRouter);
 app.use("/api", router);
 
-app.post("/api",(request,response) => {
- return  response.redirect('/');
-})
+
 // For week4 no need to look into this!
 // Ensures that the client router works on reload aswell.
 // Sends all requests back to index.html where the routing lib takes over

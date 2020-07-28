@@ -1,23 +1,3 @@
-function renderMeals(meals) {
-  return meals
-    .map((mealDetails) => {
-      return `
-  
-<div class = "left-half">
-       <div class="img-column">
-       
-          <li class="meal-title"> ${mealDetails.title} </a></li>
-           <img class ="meal-photo" src="/images/${mealDetails.title}.jpg" alt="Meal with title displayed" width ="180" height="150">
-           <div class="book-meal">
-         <a href = "/meal/${mealDetails.id}">   <input type="button" class="book-button"  value = "Book Meal">  </a>
-         </div>
-       </div>
-     </div>
-     `;
-    })
-    .join("");
-}
-
 window.handleMealsRequest = async () => {
   const getMealsFromDB = await fetch("/api/meals");
   const getAllMeals = await getMealsFromDB.json();
@@ -28,8 +8,6 @@ window.handleMealsRequest = async () => {
     <meta name='viewport'
         content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <title>Mealsharing</title>
-  
-     
       </head>
       <body>
      <div class="render-meal">
@@ -45,18 +23,12 @@ window.handleMealsRequest = async () => {
         
             <div class ="menu">
               <ul class="main-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/reviews">Reviews</a></li>
-               <li><a href="/reservations">Reservations</a></li>
+              <li><a href="/" data-navigo >Home</a></li>
+              <li><a href="/reviews" data-navigo >Reviews</a></li>
+               <li><a href="/reservations" data-navigo >Reservations</a></li>
              </ul>
      </div>
-    </div>
-    
- 
-
-  
-
-            
+    </div>   
        <div class = "meals-container">
 
         ${renderMeals(getAllMeals)}   </div>
@@ -113,5 +85,24 @@ window.handleMealsRequest = async () => {
           });
         });
     });
+  }
+  function renderMeals(meals) {
+    return meals
+      .map((mealDetails) => {
+        return `
+    
+  <div class = "left-half">
+         <div class="img-column">
+         
+            <li class="meal-title"> ${mealDetails.title} </a></li>
+             <img class ="meal-photo" src="/images/${mealDetails.title}.jpg" alt="Meal with title displayed" width ="180" height="150">
+             <div class="book-meal">
+           <a href = "/meal/${mealDetails.id}">   <input type="button" class="book-button"  value = "Book Meal">  </a>
+           </div>
+         </div>
+       </div>
+       `;
+      })
+      .join("");
   }
 };

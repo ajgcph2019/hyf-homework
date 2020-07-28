@@ -1,18 +1,3 @@
-function renderMealWithID(meal) {
-  return meal.map((mealDetail) => {
-    return ` 
-   
-    <li class="meal"> <img src="../images/${mealDetail.title}.jpg" alt="Meal with title displayed" width ="180" height="150"></li>
-    <li class="meal"> Title : ${mealDetail.title} </li>
-    <li class="meal"> Description : ${mealDetail.description} </li>
-     <li class="meal"> Price :${mealDetail.price} kr </li>
-     <li class="meal"> Location :${mealDetail.location} </li>
-     <li class="meal">Maximum Reservation : ${mealDetail.max_reservation} </li>
-     `;
-     
-  });
-}
-
 window.handleMealRequest = async (params) => {
   const getMealResponse = await fetch(`/api/meals/${params.id}`);
 
@@ -35,9 +20,9 @@ document.body.innerHTML = `
       </div>
         <div class ="menu">
           <ul class="main-nav">
-          <li><a href="/">Home</a></li>
-          <li><a href="/reviews">Reviews</a></li>
-           <li><a href="/reservations">Reservations</a></li>
+          <li><a href="/" data-navigo >Home</a></li>
+          <li><a href="/reviews" data-navigo >Reviews</a></li>
+           <li><a href="/reservations" data-navigo >Reservations</a></li>
          </ul>
       </div>
 </div>
@@ -100,4 +85,18 @@ document.body.innerHTML = `
 </html>
 </body>
   `;
+  function renderMealWithID(meal) {
+    return meal.map((mealDetail) => {
+      return ` 
+     
+      <li class="meal"> <img src="../images/${mealDetail.title}.jpg" alt="Meal with title displayed" width ="180" height="150"></li>
+      <li class="meal"> Title : ${mealDetail.title} </li>
+      <li class="meal"> Description : ${mealDetail.description} </li>
+       <li class="meal"> Price :${mealDetail.price} kr </li>
+       <li class="meal"> Location :${mealDetail.location} </li>
+       <li class="meal">Maximum Reservation : ${mealDetail.max_reservation} </li>
+       `;
+       
+    });
+  }
 };
