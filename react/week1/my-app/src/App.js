@@ -1,23 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import ToDoItems from './ToDoItem/ToDoItems';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+       
+
+        <Header />
+        <ToDoItems  />
+        <Footer />
+      </div>
+    );
 }
 
 export default App;
