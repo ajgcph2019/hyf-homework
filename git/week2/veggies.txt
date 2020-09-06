@@ -5,3 +5,4 @@ brinjal
 radish
 potato
 beetroot
+beans
